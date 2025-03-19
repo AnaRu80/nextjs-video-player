@@ -1,0 +1,79 @@
+.videoPage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 20px;
+	background-color: #f4f4f4;
+}
+
+/* Contenedor principal con dos columnas */
+.videoContent {
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	max-width: 1200px;
+	gap: 40px;
+}
+
+/* Video en la izquierda */
+.videoContainer {
+	flex: 1; /* Toma el 50% del ancho */
+	max-width: 600px;
+}
+
+/* Información en la derecha */
+.infoContainer {
+	flex: 1; /* Toma el 50% del ancho */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del título */
+.videoTitle {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* Estilos del usuario */
+.userInfo {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.userInfo a {
+	color: #1e90ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* Controles del video estilo Spotify */
+.videoControls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.videoControls button {
+	background: none;
+	border: none;
+	color: black;
+	font-size: 24px;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 50%;
+	transition: background 0.2s ease-in-out;
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+}
