@@ -17,7 +17,7 @@ export default function VideoList() {
           <img src={video.image} alt={video.url} />
           <div className="video-info">
             <h3>{extractTitleFromURL(video.url)}</h3>
-            <Link href={`/video/${video.id}`}>Ver Detalles</Link>
+            <Link href={`/video/${video.id}`}>See clip</Link>
           </div>
         </div>
       ))}
