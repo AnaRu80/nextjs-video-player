@@ -1,10 +1,19 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-	req: Request,
-	{ params }: { params: { id: string } }
+	req: NextRequest,
+	context: { params: { id: string } }
 ) {
+	const { params } = context;
 	const API_KEY = process.env.PEXELS_API_KEY;
+
+	if (!params?.id) {
+		return NextResponse.json(
+			{ error: 'Invalid request: Missing ID' },
+			{ status: 400 }
+		);
+	}
+
 	const API_URL = `https://api.pexels.com/videos/videos/${params.id}`;
 
 	if (!API_KEY) {
