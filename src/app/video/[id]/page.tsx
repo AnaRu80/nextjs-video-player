@@ -3,11 +3,9 @@
 import { useParams, useRouter } from "next/navigation";
 import { useVideo } from "@/app/hooks/useVideo";
 import { useVideoPlayer } from "@/app/hooks/useVideoPlayer";
-import VideoPlayer from "../../../components/VideoPlayer";
 import styles from "@/styles/VideoPage.module.scss";
-import VideoControls from '@/components/VideoControlers';
-import VideoInfo from '@/components/VideoInfo';
-import VideoHeader from '@/components/VideoHeader';
+import { VideoPlayer, VideoControls, VideoInfo, VideoHeader } from "@/components";
+
 
 export default function VideoPage() {
   const params = useParams();
