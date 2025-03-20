@@ -6,7 +6,8 @@ import { useVideoPlayer } from "@/app/hooks/useVideoPlayer";
 import VideoPlayer from "@/components/VideoPlayer";
 import styles from "@/styles/VideoPage.module.scss";
 import { extractTitleFromURL } from '@/app/utils/general';
-import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaHeart, FaArrowLeft, FaRedo } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import VideoControls from '@/components/VideoControlers';
 
 export default function VideoPage() {
   const params = useParams();
@@ -44,22 +45,12 @@ export default function VideoPage() {
               </a>
             </div>
 
-            <div className={styles.videoControls}>
-
-              <button className={styles.controlButton} onClick={() => videoPlayerRef.current?.seekBackward()}>
-                <FaStepBackward size={30} />
-              </button>
-
-
-              <button className={styles.playButton} onClick={togglePlay}>
-
-                {isEnded ? <FaRedo size={40} /> : isPlaying ? <FaPause size={40} /> : <FaPlay size={40} />}
-              </button>
-
-              <button className={styles.controlButton} onClick={() => videoPlayerRef.current?.seekForward()}>
-                <FaStepForward size={30} />
-              </button>
-            </div>
+            <VideoControls
+              videoPlayerRef={videoPlayerRef}
+              isPlaying={isPlaying}
+              isEnded={isEnded}
+              togglePlay={togglePlay}
+            />
 
 
           </div>
