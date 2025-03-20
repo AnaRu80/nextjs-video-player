@@ -1,4 +1,4 @@
-import "@/styles/globals.scss"; // Importa los estilos globales
+import "@/styles/globals.scss";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

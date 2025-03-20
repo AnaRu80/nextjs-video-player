@@ -9,7 +9,7 @@ export default function VideoList() {
   if (error) return <p>Error loading videos</p>;
   if (isLoading) return <p>Loading...</p>;
   if (!videos.length) return <p>No videos found</p>;
-  console.log(videos)
+
   return (
     <div className="video-list">
       {videos.map((video: any) => (

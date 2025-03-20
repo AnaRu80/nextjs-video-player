@@ -8,44 +8,62 @@ import styles from "@/styles/VideoPlayer.module.scss";
 
 interface VideoPlayerProps {
   videoUrl: string;
+  onEnd?: () => void;
 }
 
-// 📌 Usamos `forwardRef` para que el `VideoPage.tsx` pueda controlar el video
-const VideoPlayer = forwardRef(({ videoUrl }: VideoPlayerProps, ref) => {
+
+const VideoPlayer = forwardRef(({ videoUrl, onEnd }: VideoPlayerProps, ref) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
-  let player: videojs.Player | null = null;
+  const playerRef = useRef<videojs.Player | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true); // 🔹 Confirmamos que el componente está montado
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {
     if (!isMounted || !videoRef.current) return;
 
-    console.log("🎬 Inicializando Video.js con URL:", videoUrl);
-
-    player = videojs(videoRef.current, {
+    playerRef.current = videojs(videoRef.current, {
       controls: true,
       autoplay: false,
       responsive: true,
       fluid: true,
+    });
+    const player = playerRef.current;
+
+    player.on("ready", () => {
+      setIsReady(true);
+      console.log("🎥 Video Ready");
+    });
+    player.on("ended", () => {
+      console.log("⏹️ Video Finish");
+      if (onEnd) {
+        onEnd();
+      }
     });
 
     const fileType = videoUrl.endsWith(".m3u8") ? "application/x-mpegURL" : "video/mp4";
     player.src({ src: videoUrl, type: fileType });
 
     return () => {
-      player?.dispose();
+      if (playerRef.current) {
+        playerRef.current.dispose();
+        playerRef.current = null;
+      }
     };
   }, [isMounted, videoUrl]);
 
-  // 📌 Exponemos métodos `play`, `pause`, `seek`
   useImperativeHandle(ref, () => ({
-    play: () => player?.play(),
-    pause: () => player?.pause(),
-    seekForward: () => player?.currentTime(player?.currentTime() + 10), // Adelantar 10s
-    seekBackward: () => player?.currentTime(player?.currentTime() - 10), // Retroceder 10s
+    play: () => playerRef.current?.play(),
+    pause: () => playerRef.current?.pause(),
+    seekForward: () => playerRef.current?.currentTime(playerRef.current?.currentTime() + 10),
+    seekBackward: () => playerRef.current?.currentTime(playerRef.current?.currentTime() - 10),
+    replay: () => {
+      playerRef.current?.currentTime(0);
+      playerRef.current?.play();
+    },
   }));
 
   return (

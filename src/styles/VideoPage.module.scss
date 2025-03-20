@@ -1,51 +1,80 @@
 .videoPage {
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 	padding: 20px;
 	background-color: #f4f4f4;
+	@media (max-width: 768px) {
+		height: 0vh;
+	}
 }
 
-/* Contenedor principal con dos columnas */
 .videoContent {
 	display: flex;
 	flex-direction: row;
 	width: 80%;
 	max-width: 1200px;
 	gap: 40px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		width: 95%;
+		align-items: center;
+	}
 }
 
-/* Video en la izquierda */
 .videoContainer {
-	flex: 1; /* Toma el 50% del ancho */
+	flex: 1;
 	max-width: 600px;
-}
 
-/* Información en la derecha */
+	@media (max-width: 768px) {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+.backButton {
+	align-items: center;
+	gap: 8px;
+	background: #1e90ff;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+
+	transition: opacity 0.2s ease-in-out;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}
 .infoContainer {
-	flex: 1; /* Toma el 50% del ancho */
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
 	padding: 20px;
 	background: white;
 	border-radius: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+	width: 100%;
+	align-items: center;
+	text-align: center;
 }
 
-/* Estilos del título */
+/* Título del video */
 .videoTitle {
 	font-size: 24px;
 	font-weight: bold;
-	margin-bottom: 10px;
+	margin-bottom: 0;
 }
 
-/* Estilos del usuario */
-.userInfo {
-	font-size: 18px;
-	margin-bottom: 20px;
+/* Usuario */
+.userInfo h2 {
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 .userInfo a {
@@ -54,13 +83,18 @@
 	font-weight: bold;
 }
 
-/* Controles del video estilo Spotify */
+/* VideoControlers */
 .videoControls {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 15px;
 	margin-top: 20px;
+
+	@media (max-width: 768px) {
+		justify-content: space-around;
+		width: 100%;
+	}
 }
 
 .videoControls button {
