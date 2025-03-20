@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useVideo } from "@/app/hooks/useVideo";
-import { useRef, useState, useEffect } from "react";
+import { useVideoPlayer } from "@/app/hooks/useVideoPlayer";
 import VideoPlayer from "@/components/VideoPlayer";
 import styles from "@/styles/VideoPage.module.scss";
 import { extractTitleFromURL } from '@/app/utils/general';
@@ -13,36 +13,14 @@ export default function VideoPage() {
   const router = useRouter();
   const id = params?.id as string;
   const { video, isLoading, error } = useVideo(id);
-  const videoPlayerRef = useRef<any>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isEnded, setIsEnded] = useState(false);
-
-  const videoUrl = video?.video_files?.find(
-    (file: any) => file.file_type === "video/mp4"
-  )?.link || "";
-
+  const { videoPlayerRef, isPlaying, isEnded, togglePlay, onEnd } = useVideoPlayer(); // 🎯 Usamos el hook
 
   if (error) return <p>Error loading video</p>;
   if (isLoading) return <p>Loading...</p>;
-  if (!video || !videoUrl) return <p>Video not found</p>;
+  if (!video) return <p>Video not found</p>;
 
-  const togglePlay = () => {
-    if (isEnded) {
-      videoPlayerRef.current?.replay();
-      setIsEnded(false);
+  const videoUrl = video.video_files?.find((file: any) => file.file_type === "video/mp4")?.link || "";
 
-    } else {
-      if (isPlaying) {
-        videoPlayerRef.current?.pause();
-      } else {
-        videoPlayerRef.current?.play();
-      }
-    }
-    setIsPlaying(!isPlaying);
-  };
-
-
-  const onEnd = () => setIsEnded(true)
 
   return (
     <div>
