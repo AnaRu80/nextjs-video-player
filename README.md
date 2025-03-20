@@ -66,7 +66,7 @@ npm run dev
 
 ### **Video Player Page**
 
-## ![Video Player](public/screenshot-video.png)
+![Video Player](public/screenshot-video.png)
 
 ## 📌 **Usage Guide**
 
