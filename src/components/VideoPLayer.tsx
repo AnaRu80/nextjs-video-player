@@ -15,7 +15,7 @@ interface VideoPlayerProps {
 const VideoPlayer = forwardRef(({ videoUrl, onEnd }: VideoPlayerProps, ref) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
-  const playerRef = useRef<videojs.Player | null>(null);
+  const playerRef = useRef<any | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
