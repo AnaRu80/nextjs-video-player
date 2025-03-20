@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(
-	req: NextRequest,
-	{ params }: { params: Record<string, string> }
-) {
+export async function GET(req: NextRequest, { params }: { params: any }) {
 	const API_KEY = process.env.PEXELS_API_KEY;
 
 	if (!params || !params.id) {
