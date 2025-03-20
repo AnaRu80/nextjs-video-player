@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
 	req: NextRequest,
-	context: { params: { id: string } }
+	{ params }: { params: Record<string, string> }
 ) {
-	const { params } = context;
 	const API_KEY = process.env.PEXELS_API_KEY;
 
-	if (!params?.id) {
+	if (!params || !params.id) {
 		return NextResponse.json(
 			{ error: 'Invalid request: Missing ID' },
 			{ status: 400 }
