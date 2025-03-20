@@ -3,7 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useVideo } from "@/app/hooks/useVideo";
 import { useVideoPlayer } from "@/app/hooks/useVideoPlayer";
-import VideoPlayer from "@/components/VideoPlayer";
+import VideoPlayer from "../../../components/VideoPlayer";
 import styles from "@/styles/VideoPage.module.scss";
 import VideoControls from '@/components/VideoControlers';
 import VideoInfo from '@/components/VideoInfo';
