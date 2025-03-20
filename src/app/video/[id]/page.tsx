@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useVideo } from "@/app/hooks/useVideo";
 import { useVideoPlayer } from "@/app/hooks/useVideoPlayer";
 import styles from "@/styles/VideoPage.module.scss";
-import { VideoControls, VideoInfo, VideoHeader } from "@/components";
+import { VideoPlayer, VideoControls, VideoInfo, VideoHeader } from "@/components";
 
 
 export default function VideoPage() {
@@ -27,7 +27,7 @@ export default function VideoPage() {
       <div className={styles.videoPage}>
         <div className={styles.videoContent}>
           <div className={styles.videoContainer}>
-            {/* <VideoPlayer ref={videoPlayerRef} videoUrl={videoUrl} onEnd={onEnd} /> */}
+            <VideoPlayer ref={videoPlayerRef} videoUrl={videoUrl} onEnd={onEnd} />
           </div>
           <div className={styles.infoContainer}>
             <VideoInfo video={video} />
