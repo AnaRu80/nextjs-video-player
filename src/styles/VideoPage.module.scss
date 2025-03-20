@@ -12,9 +12,9 @@
 .videoContent {
 	display: flex;
 	flex-direction: row;
-	width: 80%;
+	width: 60%;
 	max-width: 1200px;
-	gap: 40px;
+	gap: 20px;
 
 	@media (max-width: 768px) {
 		flex-direction: column;
@@ -32,22 +32,7 @@
 		max-width: 100%;
 	}
 }
-.backButton {
-	align-items: center;
-	gap: 8px;
-	background: #1e90ff;
-	padding: 10px;
-	border-radius: 5px;
-	border: none;
-	font-size: 16px;
-	cursor: pointer;
 
-	transition: opacity 0.2s ease-in-out;
-
-	&:hover {
-		opacity: 0.7;
-	}
-}
 .infoContainer {
 	flex: 1;
 	display: flex;
@@ -61,53 +46,4 @@
 	width: 100%;
 	align-items: center;
 	text-align: center;
-}
-
-/* Título del video */
-.videoTitle {
-	font-size: 24px;
-	font-weight: bold;
-	margin-bottom: 0;
-}
-
-/* Usuario */
-.userInfo h2 {
-	font-size: 14px;
-	margin-bottom: 0;
-	margin-top: 0;
-}
-
-.userInfo a {
-	color: #1e90ff;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-/* VideoControlers */
-.videoControls {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 15px;
-	margin-top: 20px;
-
-	@media (max-width: 768px) {
-		justify-content: space-around;
-		width: 100%;
-	}
-}
-
-.videoControls button {
-	background: none;
-	border: none;
-	color: black;
-	font-size: 24px;
-	cursor: pointer;
-	padding: 10px;
-	border-radius: 50%;
-	transition: background 0.2s ease-in-out;
-
-	&:hover {
-		background: rgba(0, 0, 0, 0.1);
-	}
 }

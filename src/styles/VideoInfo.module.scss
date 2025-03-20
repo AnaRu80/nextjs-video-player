@@ -1,0 +1,23 @@
+.videoTitle {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 0;
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+}
+
+.userInfo h2 {
+	font-size: 14px;
+	margin-bottom: 0;
+	margin-top: 0;
+	@media (max-width: 768px) {
+		font-size: 12px;
+	}
+}
+
+.userInfo a {
+	color: #1e90ff;
+	text-decoration: none;
+	font-weight: bold;
+}

@@ -1,5 +1,5 @@
 import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaRedo } from "react-icons/fa";
-import styles from "@/styles/VideoPage.module.scss";
+import styles from "@/styles/VideoControlers.module.scss";
 
 interface VideoControlsProps {
   videoPlayerRef: any;
