@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
 	const API_KEY = process.env.PEXELS_API_KEY;
-	const API_URL = 'https://api.pexels.com/videos/popular?per_page=5';
+	const API_URL = 'https://api.pexels.com/videos/popular?per_page=9';
 
 	if (!API_KEY) {
 		return NextResponse.json({ error: 'API Key not found' }, { status: 500 });
